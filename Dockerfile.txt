@@ -1,0 +1,17 @@
+FROM node:latest
+
+##sets directory in the container to /app to store files and launch our app.
+WORKDIR /app
+
+##copies the app to /app directory with dependencies.
+COPY package*.json /app
+
+RUN npm install
+
+COPY . /app
+
+##  it exposes the port where our app is running that is port 8080.
+EXPOSE 8080
+
+## it commands to run our app which is index.js.
+CMD ["npm", "start"]
